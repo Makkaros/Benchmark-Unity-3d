@@ -1,0 +1,308 @@
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+public class MainMenu : MonoBehaviour {
+
+	public int i =5;
+
+	public GameObject Options; 
+	public GameObject Main;
+	public GameObject pre_bench;
+	public GameObject pre_game;
+	//public GameObject Main;
+	public bool bl=false;
+	public Toggle anti;
+	public Toggle shadow;
+	public Toggle Res_512_384;
+	public Toggle Res_640_400;
+	public Toggle Res_640_480;
+	public Toggle Res_800_600;
+	public Toggle Res_1024_768;
+	public Toggle Res_1280_600;
+	public Toggle Res_1280_720;
+	public Toggle Res_1280_768;
+	public Toggle Res_1360_768;
+	public Toggle Res_1366_768;
+
+	public GameObject fire;
+	public GameObject fire1;
+	public GameObject smoke;
+
+
+
+	public GameObject Spawn_Varelia;
+	public GameObject Varelia_orthia;
+	public GameObject Event_Cam0;
+	public GameObject Event_Cam1;
+	public GameObject Event_Cam2;
+	public GameObject Event_Cam3;
+
+	public Shadow s;
+	public Light fos;
+	public Light f_bench;
+	// Use this for initialization
+
+
+	public void SceneChange (int Number) {// allagi skinis me to patima koumpiou
+
+		Application.LoadLevel(Number);
+	}
+	public void OptionsChange() // na kanei true to canvas tou options i tou main menu
+	{
+		Main.SetActive (false);
+		Options.SetActive (true);
+	}
+   	
+
+	public void ExitApp() // otan patietai to button exit sto main menu
+	{	
+		Application.Quit ();
+		}
+
+
+	public void SetAntiAlias()  // To checkmark tou antialias ti na kanei otan einai check i oxi
+	{		
+				if (anti.isOn) {
+			QualitySettings.antiAliasing = 8;	
+			PlayerPrefs.SetInt("Antialias",8);
+		}
+				if (!anti.isOn) {
+			QualitySettings.antiAliasing = 0;	
+			PlayerPrefs.SetInt("Antialias",0);
+		
+		}
+				
+						
+				}
+	public void SetShadow() // na emfanizei i oxi ta shadows 
+	{
+		if (shadow.isOn) {	
+			fos.shadows	=LightShadows.Soft;
+			
+			PlayerPrefs.SetInt("fos",1);
+		}
+		if(!shadow.isOn)
+		{
+			fos.shadows=LightShadows.None;
+			PlayerPrefs.SetInt("fos",0);
+		}
+	}
+
+	public void SetScreenResolution() //epilogi antistoixou screen resolution
+
+	{
+
+		if (Res_640_480.isOn) {
+			Screen.SetResolution (640, 480, true);
+
+		}
+		if (!Res_640_480.isOn)
+			Screen.SetResolution(640, 480, false);
+
+
+	}
+
+	public void Normal(){ //Normal Scenario 
+		//i = 0;
+	//	QualitySettings.SetQualityLevel (1);
+		PlayerPrefs.SetInt("Quality",0);
+		Debug.Log (i);
+		SceneChange (1);
+
+	}
+	public void Extreme(){ //Extreme Scenario
+	//	i = 1;
+	//	QualitySettings.SetQualityLevel (4);
+	PlayerPrefs.SetInt("Quality",1);
+		Debug.Log (i);
+		SceneChange (1);
+	}
+	public void SetScreenResolution_1()
+		
+	{
+		if (Res_800_600.isOn)
+		Screen.SetResolution(800, 600, true);
+
+		if (!Res_800_600.isOn)
+			Screen.SetResolution(800, 600, false);
+		}
+
+
+		public void SetScreenResolution_2()
+			
+		{
+		if (Res_1024_768.isOn)
+			Screen.SetResolution(1024, 768, true);
+		if (!Res_1024_768.isOn)
+			Screen.SetResolution(1024, 768, false);
+	}
+	public void SetScreenResolution_3()
+		
+	{
+		if ( Res_1280_600.isOn)
+			Screen.SetResolution(1280, 600, true);
+		if (!Res_1280_600.isOn)
+			Screen.SetResolution(1280, 600, false);
+	}
+			
+	public void SetScreenResolution_4()
+		
+	{
+		if ( Res_1280_720.isOn)
+			Screen.SetResolution(1280, 720, true);
+		if (!Res_1280_720.isOn)
+			Screen.SetResolution(1280, 720, false);
+	}
+
+	public void SetScreenResolution_5()
+		
+	{
+		if ( Res_1280_768.isOn)
+			Screen.SetResolution(1280, 768, true);
+		if (!Res_1280_768.isOn)
+			Screen.SetResolution(1280, 768, false);
+	}
+	public void SetScreenResolution_6()
+		
+	{
+		if ( Res_1360_768.isOn)
+			Screen.SetResolution(1360, 768, true);
+		if (!Res_1360_768.isOn)
+			Screen.SetResolution(1360, 768, false);
+	}
+	public void SetScreenResolution_7()
+		
+	{
+		if ( Res_1366_768.isOn)
+			Screen.SetResolution(1366, 768, true);
+		if (!Res_1366_768.isOn)
+			Screen.SetResolution(1366, 768, false);
+	}
+	public void SetScreenResolution_8()
+		
+	{
+		if ( Res_512_384.isOn)
+			Screen.SetResolution(512, 384, true);
+		if (!Res_512_384.isOn)
+			Screen.SetResolution(512, 384, false);
+	}
+
+	public void SetScreenResolution_9()
+		
+	{
+		if ( Res_640_400.isOn)
+			Screen.SetResolution(640, 400, true);
+		if (!Res_640_400.isOn)
+			Screen.SetResolution(640, 400, false);
+	}
+	public void SetScreenResolution_10()
+		
+	{
+		if ( Res_640_480.isOn)
+			Screen.SetResolution(640, 480, true);
+		if (!Res_640_480.isOn)
+			Screen.SetResolution(640, 480, false);
+	}
+		public void Return() //otan patietai to button return apo to options
+	{	
+
+		Main.SetActive (true);
+
+		Options.SetActive (false);
+		pre_bench.SetActive (false);
+		}
+	public void OnClickVenezia() //otan patietai to button venezia 
+	{	
+
+
+		
+
+		pre_bench.SetActive (false);
+		pre_game.SetActive (true);
+	}
+	public void preGame_change() //otan patietai to button return apo to options
+	{	
+		Main.SetActive (false);
+		pre_bench.SetActive (true);
+
+		
+
+		
+	}
+
+
+	// Update is called once per frame
+	void Update () {
+
+		 
+		if(Input.GetKeyDown("v"))
+		{
+			f_bench.shadows = LightShadows.Soft;;
+			
+			
+		}
+		if(Input.GetKeyDown("c"))
+		{	Debug.Log("55555555");
+			f_bench.shadows = LightShadows.None;
+			
+			
+		}
+		if(Input.GetKeyDown("q"))
+		   {
+			QualitySettings.antiAliasing=0;
+
+
+		}
+		if(Input.GetKeyDown("w"))
+		   {
+
+			QualitySettings.antiAliasing=8;
+
+
+		}
+
+	}
+
+
+	void Awake(){
+			
+		if (PlayerPrefs.GetInt("Quality") == 0) {
+			QualitySettings.SetQualityLevel (2);
+			fire.SetActive(false);
+			fire1.SetActive(false);
+			smoke.SetActive(false);
+			Varelia_orthia.SetActive(false);
+			Event_Cam0.SetActive(false);
+			Event_Cam1.SetActive(false);
+			Event_Cam2.SetActive(false);
+			Event_Cam3.SetActive(false);
+			Spawn_Varelia.SetActive(false);
+
+		}
+		if (PlayerPrefs.GetInt("Quality") == 1) {
+			fire.SetActive(true);
+			fire1.SetActive(true);
+			smoke.SetActive(true);
+			Spawn_Varelia.SetActive(true);
+			Varelia_orthia.SetActive(true);
+			Event_Cam0.SetActive(true);
+			Event_Cam1.SetActive(true);
+			Event_Cam2.SetActive(true);
+			Event_Cam3.SetActive(true);
+			QualitySettings.SetQualityLevel (5);
+		}
+				QualitySettings.antiAliasing = PlayerPrefs.GetInt ("Antialias");
+
+				if (PlayerPrefs.GetInt("fos")==1) {
+			         fos.shadows	=LightShadows.Soft;
+					f_bench.shadows = LightShadows.Soft;
+
+		
+		}
+		if(PlayerPrefs.GetInt ("fos") ==0 ){
+			f_bench.shadows = LightShadows.None;
+			fos.shadows	=LightShadows.None;
+		}
+}
+}
