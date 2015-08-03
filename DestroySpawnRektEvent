@@ -1,0 +1,47 @@
+using UnityEngine;
+using System.Collections;
+
+public class DestroySpawnRektEvent : MonoBehaviour {
+
+	public float tim=0.0f;
+	public float start_inst;
+	public float end_inst;
+
+
+	public GameObject spawn;
+	public GameObject expl;
+	public GameObject expl_1;
+	public GameObject kapno;
+	public GameObject	rekt;
+
+	public bool sp;
+
+
+
+
+
+	// Use this for initialization
+	void Start () {
+	
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
+		tim += Time.deltaTime;
+
+		if (tim > start_inst && tim < end_inst) {
+			Instantiate(expl,spawn.transform.position,	spawn.transform.rotation);	
+			Instantiate(expl_1,spawn.transform.position,	spawn.transform.rotation);
+			Instantiate(kapno,spawn.transform.position,	spawn.transform.rotation);
+			Destroy(rekt);
+		}
+		if (sp&& tim>start_inst && tim<end_inst ) {
+				
+			for(int i=0; i<20; i++){
+			Instantiate(expl,spawn.transform.position,	spawn.transform.rotation);	
+			}
+			Destroy (rekt);
+			}
+	}
+}
