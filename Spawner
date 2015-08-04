@@ -1,0 +1,66 @@
+#pragma strict
+
+var spawn_pos : GameObject;
+var player : GameObject;
+var i : int ;
+var Timer =0.0;
+var maxPlanes = 2000;
+var Num : UI.Text;
+
+function Start () {
+
+
+Debug.Log(SystemInfo.graphicsDeviceName);
+Debug.Log(SystemInfo.deviceModel);
+Debug.Log(SystemInfo.operatingSystem);
+Debug.Log(SystemInfo.deviceName);
+Debug.Log(SystemInfo.systemMemorySize);
+Debug.Log(SystemInfo.graphicsMemorySize);
+
+Checker(Timer,maxPlanes);
+
+}
+
+	function Update () {
+
+
+	    Timer+=Time.deltaTime;
+		Checker(Timer,maxPlanes);
+		Num.text="Number:"+maxPlanes;
+
+		
+		
+		  
+}
+	/*for(i=0;i<1;i++)
+	    {
+		Instantiate(player , spawn_pos.transform.position,spawn_pos.transform.rotation);
+		}
+		
+	*/
+		
+
+
+	
+function  Checker(t:int,c:int) {
+
+
+
+		
+		if(t<180 && maxPlanes>0)
+		{
+		Instantiate(player , spawn_pos.transform.position,spawn_pos.transform.rotation);
+		maxPlanes--;
+		}
+		Restart();
+		
+}
+
+function Restart()
+	{
+		yield WaitForSeconds(0.01);
+		//Checker(Timer,maxPlanes);
+
+
+	}	
+  
