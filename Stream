@@ -7,7 +7,7 @@ using System.Xml;
 public class Stream : MonoBehaviour {
 	
 	
-	//	public	StreamWriter file2 = new StreamWriter("file.txt");
+
 	public Text tx ;
 	public Text tm ;
 	public Text sum;
