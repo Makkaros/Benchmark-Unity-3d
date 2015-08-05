@@ -94,13 +94,13 @@ public class FADER : MonoBehaviour {
 	void FadeToBlack(){
 
 		img.color = Color.Lerp (Color.black, Color.clear, fadeSpeed * Time.deltaTime);
-		Debug.Log ("1");
-	//	GetComponent<GUITexture>().color = Color.Lerp (GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
+	
+
 	}
 	void FadeToClear(){
 
 		img.color = Color.Lerp (Color.clear, Color.black, fadeSpeed * Time.deltaTime);
-		//GetComponent<GUITexture>().color = Color.Lerp (GetComponent<GUITexture>().color, Color.clear, fadeSpeed*Time.deltaTime);
+		
 	}
 
 }
