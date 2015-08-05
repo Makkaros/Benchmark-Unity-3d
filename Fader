@@ -1,0 +1,106 @@
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+public class FADER : MonoBehaviour {
+	public float fadeSpeed =0.5f;
+	public float timer =0.0f;
+	public GameObject main_cam;
+	public GameObject cam_1;
+	public GameObject cam_2;
+	public GameObject cam_3;
+	public GameObject cam_4;
+
+	public Image img;
+
+
+
+	public float tm=0.0f;
+	// Use this for initialization
+	void Start () {
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		timer= Time.timeSinceLevelLoad;
+		tm=Time.timeSinceLevelLoad;
+		if(tm>18&&tm<19) {
+			
+			
+			main_cam.SetActive(false);
+			cam_1.SetActive(true);
+		}
+		if (tm > 42 && tm < 43) {
+			cam_1.SetActive (false);
+			cam_2.SetActive (true);
+			//		fs.transform.rotation= 
+		}
+		
+		if (tm > 70 && tm < 71) {
+			cam_2.SetActive (false);
+			cam_3.SetActive (true);
+		}
+		if (tm > 152 && tm < 153) {
+			cam_3.SetActive (false);
+			cam_4.SetActive (true);
+		}
+		if (timer > 2 && timer < 9) {
+			FadeToClear1();
+			FadeToClear ();
+		}
+		if (timer >17 && timer < 19) {
+			FadeToBlack ();		
+			
+		}
+		if (timer > 19 && timer < 21) {
+			FadeToClear ();
+		}		
+		if (timer >40&& timer < 42) {
+			FadeToBlack ();		
+			
+		}
+		if (timer > 44 && timer < 45) {
+			FadeToClear ();		
+			
+		}
+		if (timer >67 && timer < 69) {
+			FadeToBlack ();		
+			
+			
+		}
+		if (timer > 70 && timer < 140) {
+			FadeToClear ();		
+			
+		}
+		if (timer >150 && timer < 152) {
+			FadeToBlack ();		
+			
+			
+		}
+		if (timer > 153 && timer < 155) {
+			FadeToClear ();		
+			
+		}
+		if (timer >35) {
+			//			Application.LoadLevel("MainMenu");
+			
+		}
+		if(Input.GetKeyDown("O"))
+		   {
+			img.color = Color.Lerp (img.color, Color.clear, fadeSpeed * Time.deltaTime);
+
+		}
+	}
+	void FadeToBlack(){
+
+		img.color = Color.Lerp (Color.black, Color.clear, fadeSpeed * Time.deltaTime);
+		Debug.Log ("1");
+	//	GetComponent<GUITexture>().color = Color.Lerp (GetComponent<GUITexture>().color, Color.black, fadeSpeed * Time.deltaTime);
+	}
+	void FadeToClear(){
+
+		img.color = Color.Lerp (Color.clear, Color.black, fadeSpeed * Time.deltaTime);
+		//GetComponent<GUITexture>().color = Color.Lerp (GetComponent<GUITexture>().color, Color.clear, fadeSpeed*Time.deltaTime);
+	}
+
+}
