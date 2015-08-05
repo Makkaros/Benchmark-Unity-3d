@@ -1,0 +1,140 @@
+using UnityEngine;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine.UI;
+using System.Text;
+using System.Xml;
+public class Stream : MonoBehaviour {
+	
+	
+	//	public	StreamWriter file2 = new StreamWriter("file.txt");
+	public Text tx ;
+	public Text tm ;
+	public Text sum;
+
+	public Text mx ;
+	public Text mn;
+
+	public Camera cam;
+
+	public GameObject score;
+	public Text m_o ;
+	public string filepath = @"C:\file.txt";
+	public string str;
+
+	public float counter = 1.0f;
+
+	public float avg=0.0f;
+	public float n_avg=0.0f;
+
+
+	//public GameObject tx;
+	public Text gc;
+	public Text device_model;
+
+	public Text os;
+	public Text sc;
+
+	public float updateInterval = 0.5f;
+	
+	public float max =0.0f;
+	public float min = 60.0f;
+
+	public float fps=0.0f;
+	public int sum_frames = 0;
+	public float  accum = 0.0f; // FPS accumulated over the interval
+	public int   frames = 0; // Frames drawn over the interval
+	public  float timeleft ; // Left
+
+	public float finalScore=0.2f;
+
+	// Use this for initialization
+	void Start () {
+		
+		File.Create (filepath);
+	
+		
+		min = 60.0f;
+
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+			//	while (Time.timeSinceLevelLoad <174.0) {
+
+			if(Time.timeSinceLevelLoad<174.0f){
+						timeleft -= Time.deltaTime;
+						accum += Time.timeScale / Time.deltaTime;
+						++frames;
+						
+						tx.text = "Fps" + (accum / frames).ToString ("f1");
+						tm.text = "Time:" + Time.timeSinceLevelLoad.ToString ("f1");
+						sum.text = "Frames:" + sum_frames;
+						sum_frames = sum_frames + frames;
+	
+
+						m_o.text = "Average:" + n_avg.ToString ("f1");
+						mx.text = "Max:" + max.ToString ("f1");
+						mn.text = "Min:" + min.ToString ("f1");
+						System.IO.File.AppendAllText (filepath, (accum / frames).ToString ("f2") + "            Time:" + Time.timeSinceLevelLoad.ToString ("f1")
+								 + System.Environment.NewLine);
+		
+
+
+						//SaveToFile ();
+						if (timeleft <= 0.0) {
+								counter++;
+
+
+								// display two fractional digits (f2 format)
+			
+								//  GetComponent.<UI>().text ="" + (accum/frames).ToString("f4");
+								//    GetComponent.<GUIText>().text = "" + (accum/frames).ToString("f4");
+								timeleft = updateInterval;
+								Debug.Log ("" + (accum / frames));
+								avg = (accum / frames) + avg;
+								n_avg = avg / counter;
+
+								if ((accum / frames) > max) {
+										max = accum / frames;
+										//min=max;
+										Debug.Log ("sffffffffff");
+										//if((accum/frames) <min)
+								}
+								if ((accum / frames) < min && (accum / frames) > 0.0) {
+										min = accum / frames;
+										Debug.Log ("sssssss");
+								}
+								accum = 0.0f;
+								frames = 0;
+								finalScore = (sum_frames) / (3 * Time.timeSinceLevelLoad);
+				
+						}
+
+		
+						if (Time.timeSinceLevelLoad > 173.0) {
+
+								score.SetActive (true);
+								//GUI.Box (Rect (250,100,Screen.width/2,Screen.height/2), "Stats");
+								gc.text = "Graphics Device name: " + SystemInfo.graphicsDeviceName;
+								device_model.text = "Device Model: " + SystemInfo.deviceModel;
+								os.text = "OS: " + SystemInfo.operatingSystem;
+								sc.text = "Score:" + finalScore.ToString("f2");
+							
+						}
+
+
+						if (Input.GetKeyDown (KeyCode.Escape))
+					//	
+								Application.LoadLevel (0);
+						//score.SetActive (false);
+				}
+	}
+		
+
+
+
+
+
+}
