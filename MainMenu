@@ -204,7 +204,7 @@ public class MainMenu : MonoBehaviour {
 		if (!Res_640_480.isOn)
 			Screen.SetResolution(640, 480, false);
 	}
-		public void Return() //otan patietai to button return apo to options
+		public void Return() //otan patietai to button return apo to option
 	{	
 
 		Main.SetActive (true);
