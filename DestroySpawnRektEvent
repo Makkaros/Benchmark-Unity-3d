@@ -34,7 +34,7 @@ public class DestroySpawnRektEvent : MonoBehaviour {
 			Instantiate(expl,spawn.transform.position,	spawn.transform.rotation);	
 			Instantiate(expl_1,spawn.transform.position,	spawn.transform.rotation);
 			Instantiate(kapno,spawn.transform.position,	spawn.transform.rotation);
-			Destroy(rekt); //destroy
+			Destroy(rekt); // destroy
 		}
 	
 }
