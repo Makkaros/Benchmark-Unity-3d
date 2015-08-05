@@ -12,7 +12,7 @@ public class DestroySpawnRektEvent : MonoBehaviour {
 	public GameObject expl;
 	public GameObject expl_1;
 	public GameObject kapno;
-	public GameObject	rekt;
+	public GameObject rekt;
 
 	public bool sp;
 
@@ -36,12 +36,5 @@ public class DestroySpawnRektEvent : MonoBehaviour {
 			Instantiate(kapno,spawn.transform.position,	spawn.transform.rotation);
 			Destroy(rekt);
 		}
-		if (sp&& tim>start_inst && tim<end_inst ) {
-				
-			for(int i=0; i<20; i++){
-			Instantiate(expl,spawn.transform.position,	spawn.transform.rotation);	
-			}
-			Destroy (rekt);
-			}
-	}
+	
 }
